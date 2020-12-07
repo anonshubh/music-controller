@@ -3,5 +3,5 @@ from django.urls import path
 from . import views
 
 urlpatterns=[
-    path('',views.index)
+    path('room/',views.RoomView.as_view()),
 ]

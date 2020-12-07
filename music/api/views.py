@@ -1,4 +1,9 @@
-from django.http import JsonResponse
+from rest_framework import generics
 
-def index(request):
-    return JsonResponse({"Hi":"working"})
+from .serializers import RoomSerializer
+from music.models import Room
+
+
+class RoomView(generics.ListAPIView):
+    queryset =  Room.objects.all()
+    serializer_class = RoomSerializer
