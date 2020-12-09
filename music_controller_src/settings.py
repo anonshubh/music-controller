@@ -58,7 +58,7 @@ ROOT_URLCONF = 'music_controller_src.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'react-client/build'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,3 +122,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+#Development Connection React Static Files
+STATICFILES_DIRS = [
+    BASE_DIR / 'react-client/build/static',
+]
