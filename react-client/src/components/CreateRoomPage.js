@@ -41,7 +41,7 @@ class CreateRoomPage extends Component {
         fetch('/api/create-room/',requestOptions)
         .then(response=>response.json())
         .then(data=>{
-            console.log(data);
+            this.props.history.push('/room/'+ data.code);
         });
     }
 
