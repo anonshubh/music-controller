@@ -37,7 +37,7 @@ class CreateRoomPage extends Component {
                 votes_to_skip: this.state.votesToSkip,
                 guest_can_pause: this.state.guestCanPause
             })
-        };
+        };  
         fetch('/api/create-room/',requestOptions)
         .then(response=>response.json())
         .then(data=>{
