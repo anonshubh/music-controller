@@ -1,4 +1,4 @@
-# music-controller
+# Music-Controller
 A Collaborative Music Web Player
 
 ##
