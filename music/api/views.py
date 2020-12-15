@@ -1,6 +1,7 @@
 from rest_framework import generics,status
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.http import JsonResponse
 
 from .serializers import RoomSerializer,CreateRoomSerializer
 from music.models import Room
@@ -75,4 +76,17 @@ class JoinRoom(APIView):
                 return Response({'message':"Room Joined!"},status=status.HTTP_200_OK)
             return Response({'Not Found':"Invalid Room Code"},status=status.HTTP_404_NOT_FOUND)
 
-        return Response({"Bad Request":"Invalid Data"},status=status.HTTP_400_BAD_REQUEST)   
+        return Response({"Bad Request":"Invalid Data"},status=status.HTTP_400_BAD_REQUEST)
+
+
+class UserInRoom(APIView):
+    
+    def get(self,request,format=None):
+        if not self.request.session.exists(self.request.session.session_key):
+            self.request.session.create()
+        
+        data = {
+            'code':self.request.session.get('room_code',None)
+        }
+
+        return JsonResponse(data,status=status.HTTP_200_OK)
