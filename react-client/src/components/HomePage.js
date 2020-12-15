@@ -13,6 +13,10 @@ class HomePage extends Component {
         this.state = {}
     }
 
+    async componentDidMount(){
+        
+    }
+
     renderHomePage(){
         return (
             <Grid container spacing={3}>
