@@ -25,6 +25,7 @@ urlpatterns = [
     
     #API Endpoints
     path('api/',include('music.api.urls')),
+    path('spotify/',include('spotify.urls')),
 ]
 
 #Redirecting all URL Matches to index.html
