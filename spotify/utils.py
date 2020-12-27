@@ -3,7 +3,15 @@ from django.utils import timezone
 from datetime import timedelta
 from requests import post
 
-from .views import CLIENT_ID,CLIENT_SECRET
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+#Create the .env file including CLIENT_ID, CLIENT_SECRET, REDIRECT_URI
+#CLIENT_ID and CLIENT_SECRET are obtained from Spotify Developer Dashboard
+CLIENT_ID = os.getenv("CLIENT_ID")
+CLIENT_SECRET = os.getenv("CLIENT_SECRET")
+REDIRECT_URI = os.getenv("REDIRECT_URI")
 
 def get_user_tokens(session_id):
     user_tokens = SpotifyToken.objects.filter(user=session_id)
@@ -39,9 +47,8 @@ def is_spotify_authenticated(session_id):
         expiry = tokens.expires_in
         if expiry <= timezone.now():
             refresh_spotify_token(session_id,tokens)
-            return True
+        return True
     return False
-
 
 
 def refresh_spotify_token(session_id,tokens):
