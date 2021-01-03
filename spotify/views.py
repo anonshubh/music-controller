@@ -82,7 +82,7 @@ class CurrentSong(APIView):
             return Response({"Error":"No Content"},status=status.HTTP_204_NO_CONTENT)
         
         item = response.get('item')
-        duration = item.get('duration')
+        duration = item.get('duration_ms')
         progress = response.get('progress_ms')
         album_cover = item.get('album').get('images')[0].get("url")
         is_playing = response.get('is_playing')
