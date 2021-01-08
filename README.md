@@ -2,4 +2,5 @@
 A Collaborative Music Web Player
 
 ##
-Under Development
+Development Paused.
+Reason: Requirement of Spotify Premium Membership
